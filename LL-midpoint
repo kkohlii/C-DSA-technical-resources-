@@ -1,0 +1,23 @@
+Given a singly linked list, find the middle of the linked list. For example, if the given linked list is 1->2->3->4->5 then the output should be 3. 
+If there are even nodes, then there would be two middle nodes, we need to print the second middle element. For example, if the given linked list is 1->2->3->4->5->6 then the output should be 4. 
+
+
+
+void mid(Node*head){
+    if(head==NULL || head->next ==NULL){
+        cout<< head->data;
+    }
+    Node*p=head;
+    Node*q=head->next;
+    while(q->next!=NULL && q!=NULL){
+        p=p->next;
+        q=q->next->next;
+    }
+    if(len(head)%2==0){
+        cout<<p->next->data;
+    }
+    else{
+        cout<<p->data;
+    }
+
+}
