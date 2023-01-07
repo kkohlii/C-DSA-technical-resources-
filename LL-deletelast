@@ -1,0 +1,15 @@
+Node*Delete(Node* head){
+     if (head==NULL){
+        return NULL;
+     }
+    if(head->next==NULL){
+        delete head;
+        return NULL;
+    }
+    Node*x= head;
+    while (x->next->next != NULL){
+        x =x->next;}
+    delete x->next;
+    x->next = NULL;
+    return head;
+     }
