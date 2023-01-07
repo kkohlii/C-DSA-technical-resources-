@@ -1,0 +1,19 @@
+bool palindrome(Node*head){
+    if(head==NULL || head->next==NULL){
+        return true;
+    }
+    Node*p=head;
+    Node*q=NULL;
+    while(p->next!=NULL){
+        q=p;
+        p=p->next;
+    }
+    if(head->data==p->data){
+       q->next=NULL;
+        delete p;
+        return palindrome(head->next);
+    }
+    else{
+        return false;
+    }
+ }
