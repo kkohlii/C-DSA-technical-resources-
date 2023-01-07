@@ -1,0 +1,92 @@
+//insertion of element.
+#include<iostream>
+using namespace std;
+
+class Node{ public:
+    int data;
+    Node*next;
+Node(int data){
+    this->data=data;
+    next=NULL;
+}};
+
+Node* Takeinput(){
+    int data;
+    cin>>data;
+    Node*head=NULL;
+    Node*tail=NULL;
+    while(data!=-1){
+        Node* newnode=new Node(data);
+        if(head==NULL){
+        head=newnode;
+        tail=newnode;
+        }
+        else if(head!=NULL){
+        // tail=newnode; DON'T WRITE THIS WRONG!!!!!
+        tail->next=newnode;
+        tail=tail->next;
+
+        }
+        cin>>data;
+    }
+    return head;
+}
+
+void print(Node*head){
+    Node*temp=head;
+    while(temp !=NULL){
+    cout<<temp->data<<" ";
+    temp=temp->next;
+    }
+}
+
+ int len(Node*head){
+    int count=0;
+    Node*t=head;
+    while(t->next !=NULL){
+        count++;
+        t=t->next;
+    }
+    return count+1;
+ }
+
+Node*insert(int i,int data,Node*head){
+    Node*newnode=new Node(data);
+    Node*temp=head;
+    int count=0;
+        if(i<0 || i>len(head)){
+            cout<<"invalid insertion!";
+        }
+        else if(i==0){
+           newnode->next=head;
+           head=newnode;
+           return head;
+        }
+while(temp!=NULL && count<i-1){
+    temp=temp->next;
+    count++;
+}
+         if(temp!=NULL){
+             Node*a=temp->next;
+             temp->next=newnode;
+             newnode->next=a;
+        }
+            return head;
+
+        }
+
+int main(){
+    cout<<"enter linked list data";
+    Node *head=Takeinput();
+  print(head);
+  cout<<len(head);
+  cout<<"index of insertion";
+  int i;
+  cin>>i;
+  int data;
+  cout<<"value of data";
+  cin>>data;
+  Node*final=insert(i,data,head);
+  print(final);
+
+}
